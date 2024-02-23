@@ -53,6 +53,10 @@ priceCents: 1899
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+//LOCATE AND IMPORTS THE VARIABLE CART  
+import {cart} from '../data/cart.js';
+
+
 
 //2) GENERATE THE HTML
 //COMBINES ALL THE HTML IN TO ONE STRING
