@@ -53,8 +53,8 @@ priceCents: 1899
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-//LOCATE AND IMPORTS THE VARIABLE CART  
-import {cart} from '../data/cart.js';
+//LOCATE AND IMPORTS THE VARIABLE CART AND ADD TO CART
+import {cart, addToCart} from '../data/cart.js';
 
 //LOCATE AND IMPORTS THE VARIABLE PRODUCTS 
 import {products} from '../data/products.js';
@@ -133,6 +133,23 @@ productsHTML += `
 document.querySelector('.js-products-grid').innerHTML = productsHTML;
 
 
+//UPDATES THE WEBPAGE
+function updateCartQuantity() {
+  let cartQuantity = 0;
+
+//CALCUATE CART QUANTITY
+  cart.forEach((cartItem) => {
+      cartQuantity += cartItem.quanity;
+  });
+  
+  //PUT THE QUANITY ON THE PAGE
+  document.querySelector('.js-cart-quantity')
+  .innerHTML = cartQuantity;
+  
+}
+
+
+
 //ADD EVENT LISTENER TO THE BUTTON ADD TO CART
 document.querySelectorAll('.js-add-to-cart')
 .forEach((button) => {
@@ -141,46 +158,10 @@ button.addEventListener('click', () => {
 //GETS THE PRODUCTS NAME
 const productId = button.dataset.productId;
 
+addToCart(productId);
 
-
-let matchingItem;
-
-//CHECKS IF THE PRODUCT IS ALREADY IN THE CART
-cart.forEach((item) => {
-if (productId === item.productId) {
-matchingItem = item;
-}
+updateCartQuantity();
 });
-
-//IF IT IS IN THE CART INCREASE THE QUANITY
-if (matchingItem) {
-    matchingItem.quanity += 1;
-}
-//IF ITS NOT IN THE CART ADD IT TO THE CART
- else {
-    // ADDS PRODUCT TO THE CART
-    cart.push({
-        productId: productId,
-        quanity: 1
-        });
-}
-
-//CALCUATE CART QUANTITY
-let cartQuantity = 0;
-
-
-cart.forEach((item) => {
-    cartQuantity += item.quanity;
-});
-
-
-
-//PUT THE QUANITY ON THE PAGE
-document.querySelector('.js-cart-quantity')
-.innerHTML = cartQuantity;
-
-});
-
 });
 
 
