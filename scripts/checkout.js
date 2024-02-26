@@ -1,9 +1,13 @@
 //LOCATE AND IMPORTS THE VARIABLE CART AND ARRAY AND ADD TO CART
-import {cart} from '../data/cart.js';
+import {cart, removeFromCart} from '../data/cart.js';
 //LOCATE AND IMPORTS THE VARIABLE PRODUCTS AND PRODUCTS ARRAY
 import {products} from '../data/products.js';
 //LOCATE AND IMPORT FORMAT CURRENCY FUNCTION
 import { formatCurrency } from '../scripts/utils/money.js';
+
+
+
+
 
 //2) GENERATE THE HTML
 //COMBINES ALL THE HTML IN TO ONE STRING
@@ -50,7 +54,7 @@ cartSummaryHTML += `
                   <span class="update-quantity-link link-primary">
                     Update
                   </span>
-                  <span class="delete-quantity-link link-primary">
+                  <span class="delete-quantity-link link-primary js-delete-link" data-product-id="${matchingProduct.id}">
                     Delete
                   </span>
                 </div>
@@ -183,6 +187,15 @@ cartSummaryHTML += `
 document.querySelector('.js-order-summary').innerHTML = cartSummaryHTML;
 
 
+//DELETE BUTTON
+document.querySelectorAll('.js-delete-link').forEach((link) => {
+link.addEventListener('click', () => {
+const productId = link.dataset.productId;
+
+removeFromCart(productId);
+
+});
+});
 
 
 
