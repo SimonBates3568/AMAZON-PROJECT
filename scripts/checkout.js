@@ -2,7 +2,8 @@
 import {cart} from '../data/cart.js';
 //LOCATE AND IMPORTS THE VARIABLE PRODUCTS AND PRODUCTS ARRAY
 import {products} from '../data/products.js';
-
+//LOCATE AND IMPORT FORMAT CURRENCY FUNCTION
+import { formatCurrency } from '../scripts/utils/money.js';
 
 //2) GENERATE THE HTML
 //COMBINES ALL THE HTML IN TO ONE STRING
@@ -40,7 +41,7 @@ cartSummaryHTML += `
                  ${matchingProduct.name}
                 </div>
                 <div class="product-price">
-                 ${matchingProduct.priceCents / 100}
+                 $${formatCurrency(matchingProduct.priceCents)}
                 </div>
                 <div class="product-quantity">
                   <span>
@@ -62,7 +63,7 @@ cartSummaryHTML += `
                 <div class="delivery-option">
                   <input type="radio" checked
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="delivery-option-${matchingProduct.id}">
                   <div>
                     <div class="delivery-option-date">
                       Tuesday, June 21
@@ -75,7 +76,7 @@ cartSummaryHTML += `
                 <div class="delivery-option">
                   <input type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="delivery-option-${matchingProduct.Id}">
                   <div>
                     <div class="delivery-option-date">
                       Wednesday, June 15
@@ -88,7 +89,7 @@ cartSummaryHTML += `
                 <div class="delivery-option">
                   <input type="radio"
                     class="delivery-option-input"
-                    name="delivery-option-1">
+                    name="delivery-option-${matchingProduct.id}">
                   <div>
                     <div class="delivery-option-date">
                       Monday, June 13

@@ -59,6 +59,10 @@ import {cart, addToCart} from '../data/cart.js';
 //LOCATE AND IMPORTS THE VARIABLE PRODUCTS 
 import {products} from '../data/products.js';
 
+//LOCATE AND IMPORT FORMAT CURRENCY FUNCTION
+import { formatCurrency } from '../scripts/utils/money.js';
+
+
 //2) GENERATE THE HTML
 //COMBINES ALL THE HTML IN TO ONE STRING
 let productsHTML = '';
@@ -91,7 +95,7 @@ productsHTML += `
           </div>
 
           <div class="product-price">
-            $${(product.priceCents / 100).toFixed(2)}
+            $${formatCurrency(product.priceCents)}
           </div>
 
           <div class="product-quantity-container">
