@@ -60,7 +60,7 @@ import {cart, addToCart} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 //LOCATE AND IMPORT FORMAT CURRENCY FUNCTION
-import { formatCurrency } from '../scripts/utils/money.js';
+import { formatCurrency } from './utils/money.js';
 
 
 //2) GENERATE THE HTML
